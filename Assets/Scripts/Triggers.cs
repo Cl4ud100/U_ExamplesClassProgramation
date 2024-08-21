@@ -11,6 +11,7 @@ public class Triggers : MonoBehaviour
     {
         if (other.CompareTag("Clue1"))
         {
+            clueFind1 = true;
             Debug.Log("Choque con el trigger " + clueFind1);
         }
     }
