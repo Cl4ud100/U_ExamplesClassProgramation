@@ -15,18 +15,8 @@ public class Clase1 : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        Debug.Log("Hola Mundo, hola july");
+        
     }
 
-    private void OnTriggerEnter(Collider other)
-    {
-        //throw new NotImplementedException();
-        Debug.Log("Prender Foco");
-    }
 
-    private void OnTriggerExit(Collider other)
-    {
-        //throw new NotImplementedException();
-        Debug.Log("Apaga la luz");
-    }
 }
