@@ -53,6 +53,16 @@ public class Triggers : MonoBehaviour
         
     }
 
+    private void OnTriggerExit(Collider other)
+    {
+        if (other.CompareTag("Damage"))
+        {
+            dangerZoneUI.SetActive(false);
+        }
+
+
+    }
+
 
     /*private void OnTriggerEnter(Collider other)
     {
