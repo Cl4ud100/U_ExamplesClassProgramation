@@ -1565,7 +1565,7 @@ GameObject:
   - component: {fileID: 1578266422}
   m_Layer: 5
   m_Name: DangerUi
-  m_TagString: Untagged
+  m_TagString: Damage
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1674,7 +1674,7 @@ MonoBehaviour:
   Health: 100
   decreaseHealth: 5
   increaseHealth: 100
-  dangerZoneUI: {fileID: 0}
+  dangerZoneUI: {fileID: 1578266421}
 --- !u!1 &1844681691
 GameObject:
   m_ObjectHideFlags: 0
