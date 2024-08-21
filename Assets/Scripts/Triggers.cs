@@ -1,16 +1,8 @@
 using UnityEngine;
 
-public class Triggers : MonoBehaviour
-{
-    // Start is called once before the first execution of Update after the MonoBehaviour is created
-    void Start()
-    {
-        
-    }
+public class Triggers : MonoBehaviour;
+public float Velocity : 4.5f;
 
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
+{
+    
 }
