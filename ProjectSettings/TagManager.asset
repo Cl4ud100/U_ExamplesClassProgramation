@@ -8,6 +8,8 @@ TagManager:
   - Clue1
   - Clue2
   - Door
+  - Health
+  - Damage
   layers:
   - Default
   - TransparentFX

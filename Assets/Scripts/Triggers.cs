@@ -5,9 +5,13 @@ using UnityEngine;
 public class Triggers : MonoBehaviour
 {
     public float velocity = 4.5f;
-    public bool clueFind1 = false;
-    public bool clueFind2 = false;
+    private bool clueFind1 = false;
+    private bool clueFind2 = false;
     private bool openDoor = false;
+
+    [SerializeField] private int Health = 100;
+    [SerializeField] private int decreaseHealth = 5;
+    [SerializeField] private int increaseHealth = 100;
 
     private void OnTriggerEnter(Collider other)
     {
@@ -32,7 +36,12 @@ public class Triggers : MonoBehaviour
                     Debug.Log("¿Para que tienes este juego si nisiquiera vas a jugarlo, niño adoptado?");
                 }
                 break;
-                
+            case "Health":
+                if (openDoor == true)
+                {
+                    Health -= decreaseHealth;
+                }
+                break;
         }
     }
 
