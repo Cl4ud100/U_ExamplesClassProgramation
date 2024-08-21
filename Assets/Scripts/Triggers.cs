@@ -12,7 +12,7 @@ public class Triggers : MonoBehaviour
     [SerializeField] private int Health = 100;
     [SerializeField] private int decreaseHealth = 5;
     [SerializeField] private int increaseHealth = 100;
-
+    [SerializeField] private GameObject dangerZoneUI;
     private void OnTriggerEnter(Collider other)
     {
         switch (other.tag)
@@ -36,10 +36,17 @@ public class Triggers : MonoBehaviour
                     Debug.Log("¿Para que tienes este juego si nisiquiera vas a jugarlo, niño adoptado?");
                 }
                 break;
-            case "Health":
+            case "Damage":
                 if (openDoor == true)
                 {
                     Health -= decreaseHealth;
+                    dangerZoneUI.SetActive(true);
+                }
+                break;
+            case "Health":
+                if (openDoor == true)
+                {
+                    Health += increaseHealth;
                 }
                 break;
         }
