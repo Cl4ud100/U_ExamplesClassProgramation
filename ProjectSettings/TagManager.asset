@@ -6,6 +6,8 @@ TagManager:
   tags:
   - CinemachineTarget
   - Clue1
+  - Clue2
+  - Door
   layers:
   - Default
   - TransparentFX
