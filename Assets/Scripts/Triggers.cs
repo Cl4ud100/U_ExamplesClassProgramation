@@ -5,14 +5,40 @@ using UnityEngine;
 public class Triggers : MonoBehaviour
 {
     public float velocity = 4.5f;
+    [Header("Clues")]
     private bool clueFind1 = false;
     private bool clueFind2 = false;
     private bool openDoor = false;
-
+    [Space]
+    
+    [Header("Health")]
     [SerializeField] private int Health = 100;
     [SerializeField] private int decreaseHealth = 5;
     [SerializeField] private int increaseHealth = 100;
+    [Space]
+    
+    [Header("Danger")]
     [SerializeField] private GameObject dangerZoneUI;
+    [SerializeField] private GameObject healthZoneUI;
+    
+    [Space]
+    
+    [Header("Door")]
+    private Animator animDoor;
+    [SerializeField] private GameObject door;
+    private Collider doorCollider;
+    [SerializeField] private GameObject doorColliderGameObject;
+    private bool doorOpened = false;
+
+    [Space]
+
+    [Header("Lights")]
+    [SerializeField] private Light _light ;
+    [SerializeField] private bool Afternoon;
+    private Animator downSun;
+    private Collider safeCollider;
+    [SerializeField] private GameObject healthzoneColliderGameObject;
+    
     private void OnTriggerEnter(Collider other)
     {
         switch (other.tag)
@@ -28,14 +54,25 @@ public class Triggers : MonoBehaviour
             case "Door":
                 if (clueFind1 && clueFind2)
                 {
-                    Debug.Log("Tienes las dos pistas, felicidades, aborto planeado");
                     openDoor = true;
+                    animDoor.SetBool("AnimDoor",true);
+                    
+                    Debug.Log("Tienes las dos pistas, felicidades, aborto planeado");
+                    
                 }
                 else
                 {
                     Debug.Log("¿Para que tienes este juego si nisiquiera vas a jugarlo, niño adoptado?");
                 }
                 break;
+            case "Light":
+            {
+                Afternoon = true;
+                downSun.SetBool("AnimSun",true);
+                
+            }
+                break;
+            
             case "Damage":
                 if (openDoor == true)
                 {
@@ -47,6 +84,7 @@ public class Triggers : MonoBehaviour
                 if (openDoor == true)
                 {
                     Health += increaseHealth;
+                    healthZoneUI.SetActive(true);
                 }
                 break;
         }
@@ -55,14 +93,34 @@ public class Triggers : MonoBehaviour
 
     private void OnTriggerExit(Collider other)
     {
-        if (other.CompareTag("Damage"))
+        switch (other.tag)
         {
-            dangerZoneUI.SetActive(false);
+            case "Door":
+                animDoor.SetBool("AnimDoor",false);
+                doorCollider = doorColliderGameObject.GetComponent<Collider>();
+                doorCollider.enabled = false; 
+                break;
+            case "Light":
+            {
+                animDoor.SetBool("AnimSun",false);
+                safeCollider = healthzoneColliderGameObject.GetComponent<Collider>();
+                break;
+            }
         }
-
-
+        
     }
 
+    private void Start()
+    {
+        Application.targetFrameRate = 60;
+        animDoor = door.GetComponent<Animator>();
+        
+    }
+
+    private void Update()
+    {
+        
+    }
 
     /*private void OnTriggerEnter(Collider other)
     {
