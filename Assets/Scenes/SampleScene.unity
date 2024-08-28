@@ -1697,9 +1697,12 @@ MonoBehaviour:
   decreaseHealth: 5
   increaseHealth: 100
   dangerZoneUI: {fileID: 1578266421}
+  healthZoneUI: {fileID: 0}
   door: {fileID: 1882103066}
   doorColliderGameObject: {fileID: 936199592}
-  _light: {fileID: 0}
+  _light: {fileID: 410087040}
+  Afternoon: 0
+  healthzoneColliderGameObject: {fileID: 1164558051}
 --- !u!1 &1739078548
 GameObject:
   m_ObjectHideFlags: 0

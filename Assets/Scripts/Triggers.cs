@@ -14,7 +14,7 @@ public class Triggers : MonoBehaviour
     [Header("Health")]
     [SerializeField] private int Health = 100;
     [SerializeField] private int decreaseHealth = 5;
-    [SerializeField] private int increaseHealth = 100;
+    [SerializeField] private int increaseHealth = 10;
     [Space]
     
     [Header("Danger")]
@@ -65,13 +65,6 @@ public class Triggers : MonoBehaviour
                     Debug.Log("¿Para que tienes este juego si nisiquiera vas a jugarlo, niño adoptado?");
                 }
                 break;
-            case "Light":
-            {
-                Afternoon = true;
-                downSun.SetBool("AnimSun",true);
-                
-            }
-                break;
             
             case "Damage":
                 if (openDoor == true)
@@ -85,6 +78,7 @@ public class Triggers : MonoBehaviour
                 {
                     Health += increaseHealth;
                     healthZoneUI.SetActive(true);
+                    downSun.SetBool("AnimSun",true);
                 }
                 break;
         }
@@ -106,6 +100,11 @@ public class Triggers : MonoBehaviour
                 safeCollider = healthzoneColliderGameObject.GetComponent<Collider>();
                 break;
             }
+            case "Health":
+            {
+                downSun.SetBool("AnimSun",false);
+                break;
+            }
         }
         
     }
@@ -114,7 +113,8 @@ public class Triggers : MonoBehaviour
     {
         Application.targetFrameRate = 60;
         animDoor = door.GetComponent<Animator>();
-        
+        downSun = _light.GetComponent<Animator>();
+
     }
 
     private void Update()
