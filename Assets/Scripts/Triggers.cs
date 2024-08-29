@@ -32,8 +32,8 @@ public class Triggers : MonoBehaviour
     [Space]
 
     [Header("Lights")]   
-    private Animator AfternoonAnimator; //solo referencias para animator
     [SerializeField] private Light _light ;
+    private Animator AfternoonAnimator; //solo referencias para animator
     
     private void Start()
     {
