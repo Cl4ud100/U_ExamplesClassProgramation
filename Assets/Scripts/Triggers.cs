@@ -31,18 +31,15 @@ public class Triggers : MonoBehaviour
 
     [Space]
 
-    [Header("Lights")]
+    [Header("Lights")]   
+    private Animator AfternoonAnimator; //solo referencias para animator
     [SerializeField] private Light _light ;
-    [SerializeField] private bool Afternoon;
-    private Animator downSun;
-    private Collider safeCollider;
-    [SerializeField] private GameObject healthzoneColliderGameObject;
     
     private void Start()
     {
         Application.targetFrameRate = 60;
         doorAnimator = door.GetComponent<Animator>();
-        downSun = _light.GetComponent<Animator>();
+        AfternoonAnimator = _light.GetComponent<Animator>();
 
     }
     private void Update()
@@ -89,7 +86,7 @@ public class Triggers : MonoBehaviour
                 {
                     Health += increaseHealth;
                     healthZoneUI.SetActive(true);
-                    downSun.SetBool("AnimSun",true);
+                    AfternoonAnimator.SetBool("AnimAfternoon",true);
                 }
                 break;
         }
@@ -105,16 +102,10 @@ public class Triggers : MonoBehaviour
                 doorCollider = doorColliderGameObject.GetComponent<Collider>();
                 doorCollider.enabled = false; 
                 break;
-            case "Light":
-            {
-                doorAnimator.SetBool("AnimSun",false);
-                safeCollider = healthzoneColliderGameObject.GetComponent<Collider>();
-                break;
-            }
             case "Health":
             {
                 healthZoneUI.SetActive(false);
-                downSun.SetBool("AnimSun",false);
+                AfternoonAnimator.SetBool("AnimAfternoon",false);
                 break;
             }
             //desactivar ui
