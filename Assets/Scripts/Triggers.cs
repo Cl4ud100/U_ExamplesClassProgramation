@@ -24,11 +24,10 @@ public class Triggers : MonoBehaviour
     [Space]
     
     [Header("Door")]
-    private Animator animDoor;
+    private Animator doorAnimator; //referencia animator de unity del componente
     [SerializeField] private GameObject door;
     private Collider doorCollider;
     [SerializeField] private GameObject doorColliderGameObject;
-    private bool doorOpened = false;
 
     [Space]
 
@@ -42,7 +41,7 @@ public class Triggers : MonoBehaviour
     private void Start()
     {
         Application.targetFrameRate = 60;
-        animDoor = door.GetComponent<Animator>();
+        doorAnimator = door.GetComponent<Animator>();
         downSun = _light.GetComponent<Animator>();
 
     }
@@ -64,10 +63,10 @@ public class Triggers : MonoBehaviour
                 Debug.Log("Encontraste las pilas de la linterna, ¿pensaste que es infinita?");
                 break;
             case "Door":
-                if (clueFind1 && clueFind2)
+                if (clueFind1 || clueFind2)
                 {
                     openDoor = true;
-                    animDoor.SetBool("AnimDoor",true);
+                    doorAnimator.SetBool("AnimDoor", true);
                     
                     Debug.Log("Tienes las dos pistas, felicidades, aborto planeado");
                     
@@ -102,13 +101,13 @@ public class Triggers : MonoBehaviour
         switch (other.tag)
         {
             case "Door":
-                animDoor.SetBool("AnimDoor",false);
+                doorAnimator.SetBool("AnimDoor",false);
                 doorCollider = doorColliderGameObject.GetComponent<Collider>();
                 doorCollider.enabled = false; 
                 break;
             case "Light":
             {
-                animDoor.SetBool("AnimSun",false);
+                doorAnimator.SetBool("AnimSun",false);
                 safeCollider = healthzoneColliderGameObject.GetComponent<Collider>();
                 break;
             }
@@ -130,33 +129,5 @@ public class Triggers : MonoBehaviour
     }
 
 
-
-
-
-    /*private void OnTriggerEnter(Collider other)
-    {
-        if (other.CompareTag("Clue1"))
-        {
-            clueFind1 = true;
-            Debug.Log("Choque con el trigger " + clueFind1);
-        } 
-        else if (other.CompareTag("Clue2"))
-        {
-            clueFind2 = true;
-            Debug.Log("Choque con el trigger " + clueFind2);
-        }
-        else if (other.CompareTag("Door"))
-        {
-            if (clueFind1 == true && clueFind2 == true)
-            {
-                Debug.Log("Puedes abrir la puerta");
-            }
-            else
-            {
-                Debug.Log("¿Estas jugando siquiera, pedazo de mierda?");
-            }
-        }
-        
-    }*/
 
 }
