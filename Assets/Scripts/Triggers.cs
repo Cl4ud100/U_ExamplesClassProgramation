@@ -11,19 +11,21 @@ public class Triggers : MonoBehaviour
     private bool openDoor = false;
     [Space]
     
-    [Header("Health")]
+    [Header("Health and damage")]
+    [Tooltip("la vida debe partir en 100")]
     [SerializeField] private int Health = 100;
     [SerializeField] private int decreaseHealth = 5;
     [SerializeField] private int increaseHealth = 10;
     [Space]
     
-    [Header("Danger")]
+    [Header("Zones")]
     [SerializeField] private GameObject dangerZoneUI;
     [SerializeField] private GameObject healthZoneUI;
     
     [Space]
     
     [Header("Door")]
+    [Tooltip("Arrastra el objeto animado")]
     private Animator doorAnimator; //referencia animator de unity del componente
     [SerializeField] private GameObject door;
     private Collider doorCollider;
