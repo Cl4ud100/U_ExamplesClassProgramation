@@ -825,7 +825,7 @@ Transform:
   m_GameObject: {fileID: 435237010}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -4.67, y: 1.08, z: 1.1100001}
+  m_LocalPosition: {x: -4.67, y: 1.08, z: -4.63}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -1125,7 +1125,7 @@ Transform:
   m_GameObject: {fileID: 936199592}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -0.17467463, y: 1.3283, z: -2.6989996}
+  m_LocalPosition: {x: -0.17467463, y: 1.3283, z: -1.5118713}
   m_LocalScale: {x: 2.7311523, y: 2.5773153, z: 1.5322974}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -1872,7 +1872,7 @@ MonoBehaviour:
   velocity: 4.5
   Health: 100
   decreaseHealth: 5
-  increaseHealth: 100
+  increaseHealth: 10
   dangerZoneUI: {fileID: 1578266421}
   healthZoneUI: {fileID: 408276019}
   door: {fileID: 1882103066}
@@ -2093,7 +2093,7 @@ Transform:
   m_GameObject: {fileID: 1844681691}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 2.79, y: 1.08, z: 1.11}
+  m_LocalPosition: {x: 4.37, y: 1.08, z: -5.09}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -2148,7 +2148,7 @@ Transform:
   m_GameObject: {fileID: 1882103066}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -1.3152723, y: 0.28256792, z: -2.7371283}
+  m_LocalPosition: {x: -1.061, y: 0.41346854, z: -2.215}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:

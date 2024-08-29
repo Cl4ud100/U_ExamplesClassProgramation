@@ -54,7 +54,7 @@ public class Triggers : MonoBehaviour
     private void OnTriggerEnter(Collider other)
     {
         switch (other.tag)
-        {
+        { //pistas para abrir la puerta
             case "Clue1":
                 clueFind1 = true;
                 Debug.Log("Recogiste la linterna");
