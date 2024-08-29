@@ -39,6 +39,18 @@ public class Triggers : MonoBehaviour
     private Collider safeCollider;
     [SerializeField] private GameObject healthzoneColliderGameObject;
     
+    private void Start()
+    {
+        Application.targetFrameRate = 60;
+        animDoor = door.GetComponent<Animator>();
+        downSun = _light.GetComponent<Animator>();
+
+    }
+    private void Update()
+    {
+        
+    }
+    
     private void OnTriggerEnter(Collider other)
     {
         switch (other.tag)
@@ -65,7 +77,7 @@ public class Triggers : MonoBehaviour
                     Debug.Log("¿Para que tienes este juego si nisiquiera vas a jugarlo, niño adoptado?");
                 }
                 break;
-            
+            //activar ui
             case "Damage":
                 if (openDoor == true)
                 {
@@ -102,25 +114,24 @@ public class Triggers : MonoBehaviour
             }
             case "Health":
             {
+                healthZoneUI.SetActive(false);
                 downSun.SetBool("AnimSun",false);
                 break;
             }
+            //desactivar ui
+            case "Damage":
+            {
+                dangerZoneUI.SetActive(false);
+                break;
+            }
+            
         }
         
     }
 
-    private void Start()
-    {
-        Application.targetFrameRate = 60;
-        animDoor = door.GetComponent<Animator>();
-        downSun = _light.GetComponent<Animator>();
 
-    }
 
-    private void Update()
-    {
-        
-    }
+
 
     /*private void OnTriggerEnter(Collider other)
     {
