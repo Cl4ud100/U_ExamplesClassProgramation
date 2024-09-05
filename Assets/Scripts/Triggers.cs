@@ -88,8 +88,7 @@ public class Triggers : MonoBehaviour
             case "Damage":
                 if (openDoor == true)
                 {
-                    Health -= decreaseHealth;
-                    dangerZoneUI.SetActive(true);
+
                     StartCoroutine(DangerZoneDamage());
                 }
                 break;
@@ -148,10 +147,26 @@ public class Triggers : MonoBehaviour
 
     IEnumerator DangerZoneDamage()
     {
-        Debug.Log("Ejecutando a la judia de la vecina");
-        yield return new WaitForSeconds(4);
-        Debug.Log("Despues de 4 segundos, Fusilan al perro de la vecina");
+        while (Health >= 0)
+        {
+            Health -= decreaseHealth;
+            dangerZoneUI.SetActive(true);
+            Debug.Log("Te mueres, atento CTM");
+            yield return new WaitForSeconds(0.5f);
+            dangerZoneUI.SetActive(false);
+            yield return new WaitForSeconds(0.5f);
+        }
         
+
+        
+    }
+
+    private void GameOver()
+    {
+        while (Health <= 0)
+        {
+            Debug.Log("Game Over Bitch");
+        }
     }
 
 
