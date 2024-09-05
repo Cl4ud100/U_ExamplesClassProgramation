@@ -45,6 +45,12 @@ public class Triggers : MonoBehaviour
     [Tooltip("Camara de la objeto animado")]
     [SerializeField] private CinemachineVirtualCamera fpCamera;
     [SerializeField] private CinemachineVirtualCamera secondCamera;
+    [Space]
+    
+    [Header("GameOver")]
+    [Tooltip("Colocacion de GameOver")]
+    [SerializeField] private GameObject gameOver;
+    [SerializeField] private GameObject gameOverUI;
     
     private void Start()
     {
@@ -156,18 +162,23 @@ public class Triggers : MonoBehaviour
             dangerZoneUI.SetActive(false);
             yield return new WaitForSeconds(0.5f);
         }
-        
+
+        if (Health <= 0)
+        {
+            gameOverUI.SetActive(true);
+            Time.timeScale = 0;
+        }
 
         
     }
 
-    private void GameOver()
+    /*private void GameOver()
     {
         while (Health <= 0)
         {
-            Debug.Log("Game Over Bitch");
+            
         }
-    }
+    }*/
 
 
 
