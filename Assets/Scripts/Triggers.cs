@@ -1,4 +1,5 @@
 using System;
+using System.Collections;
 using Cinemachine;
 using Unity.VisualScripting;
 using UnityEngine;
@@ -89,6 +90,7 @@ public class Triggers : MonoBehaviour
                 {
                     Health -= decreaseHealth;
                     dangerZoneUI.SetActive(true);
+                    StartCoroutine(DangerZoneDamage());
                 }
                 break;
             case "Health":
@@ -142,6 +144,14 @@ public class Triggers : MonoBehaviour
     {
         secondCamera.Priority = 0;
         fpCamera.Priority = 10;
+    }
+
+    IEnumerator DangerZoneDamage()
+    {
+        Debug.Log("Ejecutando a la judia de la vecina");
+        yield return new WaitForSeconds(4);
+        Debug.Log("Despues de 4 segundos, Fusilan al perro de la vecina");
+        
     }
 
 
