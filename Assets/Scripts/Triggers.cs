@@ -1,4 +1,5 @@
 using System;
+using Cinemachine;
 using Unity.VisualScripting;
 using UnityEngine;
 
@@ -36,6 +37,13 @@ public class Triggers : MonoBehaviour
     [Header("Lights")]   
     [SerializeField] private Light _light ;
     private Animator AfternoonAnimator; //solo referencias para animator
+    
+    [Space]
+    //esta zona es para las camaraas
+    [Header("Camera")]
+    [Tooltip("Camara de la objeto animado")]
+    [SerializeField] private CinemachineVirtualCamera fpCamera;
+    [SerializeField] private CinemachineVirtualCamera secondCamera;
     
     private void Start()
     {
@@ -89,6 +97,8 @@ public class Triggers : MonoBehaviour
                     Health += increaseHealth;
                     healthZoneUI.SetActive(true);
                     AfternoonAnimator.SetBool("AnimAfternoon",true);
+                    SwitchToNewCamera();
+                    Invoke("SwitchTofpCamera", 5);
                 }
                 break;
         }
@@ -108,6 +118,7 @@ public class Triggers : MonoBehaviour
             {
                 healthZoneUI.SetActive(false);
                 AfternoonAnimator.SetBool("AnimAfternoon",false);
+                SwitchTofpCamera();
                 break;
             }
             //desactivar ui
@@ -119,6 +130,18 @@ public class Triggers : MonoBehaviour
             
         }
         
+    }
+    //´Para cambiar la camara de primera a segunda, se crea un nuevo metodo personal
+    private void SwitchToNewCamera()
+    {
+        fpCamera.Priority = 0;
+        secondCamera.Priority = 10;
+    }
+
+    private void SwitchTofpCamera()
+    {
+        secondCamera.Priority = 0;
+        fpCamera.Priority = 10;
     }
 
 
