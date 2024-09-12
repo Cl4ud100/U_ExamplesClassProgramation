@@ -8,9 +8,9 @@ public class Triggers : MonoBehaviour
 {
     public float velocity = 4.5f;
     [Header("Clues")]
-    private bool clueFind1 = false;
-    private bool clueFind2 = false;
-    private bool openDoor = false;
+    private bool clueFind1;
+    private bool clueFind2;
+    private bool openDoor;
     [Space]
     
     [Header("Health and damage")]
