@@ -3,6 +3,7 @@ using System.Collections;
 using Cinemachine;
 using Unity.VisualScripting;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class Triggers : MonoBehaviour
 {
@@ -15,6 +16,7 @@ public class Triggers : MonoBehaviour
     
     [Header("Health and damage")]
     [Tooltip("la vida debe partir en 100")]
+    [Space]
     [SerializeField] private int Health = 100;
     [SerializeField] private int decreaseHealth = 5;
     [SerializeField] private int increaseHealth = 10;
@@ -63,6 +65,9 @@ public class Triggers : MonoBehaviour
         AfternoonAnimator = _light.GetComponent<Animator>();
         //Se embotella en variable la corrutina para pararla
         instanciaCorrutina = DangerZoneDamage();
+        //oculta y bloquea en cursor en pantalla
+        Cursor.lockState = CursorLockMode.Locked;
+        Time.timeScale = 1;
 
     }
     private void Update()
@@ -171,11 +176,23 @@ public class Triggers : MonoBehaviour
 
         if (Health <= 0)
         {
-            gameOverUI.SetActive(true);
-            Time.timeScale = 0;
+            GameOver();
         }
-
+    
+        
         
     }
-    
+
+    private void GameOver()
+    {
+        gameOverUI.SetActive(true);
+        //para mostrar el cursor en pantalla 
+        Cursor.lockState = CursorLockMode.None;
+        Time.timeScale = 0;
+    }
+    public void Reset()
+    {
+        //reinicia el juego
+        SceneManager.LoadScene("SampleScene");
+    }
 }
