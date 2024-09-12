@@ -40,7 +40,7 @@ public class Triggers : MonoBehaviour
     private Animator AfternoonAnimator; //solo referencias para animator
     
     [Space]
-    //esta zona es para las camaraas
+    //esta zona es para las camaras
     [Header("Camera")]
     [Tooltip("Camara de la objeto animado")]
     [SerializeField] private CinemachineVirtualCamera fpCamera;
@@ -51,12 +51,18 @@ public class Triggers : MonoBehaviour
     [Tooltip("Colocacion de GameOver")]
     [SerializeField] private GameObject gameOver;
     [SerializeField] private GameObject gameOverUI;
+
+    //Esta variable es para juntar la corrutina en el trigger
+    private IEnumerator instanciaCorrutina;
     
     private void Start()
     {
+        //Aqui se unen variable y proposito
         Application.targetFrameRate = 60;
         doorAnimator = door.GetComponent<Animator>();
         AfternoonAnimator = _light.GetComponent<Animator>();
+        //Se embotella en variable la corrutina para pararla
+        instanciaCorrutina = DangerZoneDamage();
 
     }
     private void Update()
@@ -94,8 +100,7 @@ public class Triggers : MonoBehaviour
             case "Damage":
                 if (openDoor == true)
                 {
-
-                    StartCoroutine(DangerZoneDamage());
+                    StartCoroutine(instanciaCorrutina);
                 }
                 break;
             case "Health":
@@ -132,6 +137,7 @@ public class Triggers : MonoBehaviour
             case "Damage":
             {
                 dangerZoneUI.SetActive(false);
+                StopCoroutine(instanciaCorrutina);
                 break;
             }
             
@@ -171,15 +177,5 @@ public class Triggers : MonoBehaviour
 
         
     }
-
-    /*private void GameOver()
-    {
-        while (Health <= 0)
-        {
-            
-        }
-    }*/
-
-
-
+    
 }
