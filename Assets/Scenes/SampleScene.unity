@@ -629,7 +629,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1705346911}
+      - m_Target: {fileID: 0}
         m_TargetAssemblyTypeName: Triggers, Assembly-CSharp
         m_MethodName: Reset
         m_Mode: 1
@@ -1382,6 +1382,7 @@ GameObject:
   - component: {fileID: 489304350}
   - component: {fileID: 489304349}
   - component: {fileID: 489304348}
+  - component: {fileID: 489304351}
   m_Layer: 0
   m_Name: DangerZone
   m_TagString: Damage
@@ -1478,6 +1479,20 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 489304346}
   m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!114 &489304351
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 489304346}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: de247df4315a1e74ebea1c4bf6802b79, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  dangerZoneUI: {fileID: 1578266421}
+  HealthDecreased: 10
 --- !u!1001 &625424262
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1535,6 +1550,51 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 79e624e6a8770a946afb866fd94b394b, type: 3}
+--- !u!1 &639453059
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 639453060}
+  - component: {fileID: 639453061}
+  m_Layer: 0
+  m_Name: GameManager
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &639453060
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 639453059}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &639453061
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 639453059}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: cde308671e83cbc449418524600539d2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  health: 100
 --- !u!1001 &701722145
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -2175,6 +2235,7 @@ GameObject:
   - component: {fileID: 1164558055}
   - component: {fileID: 1164558054}
   - component: {fileID: 1164558053}
+  - component: {fileID: 1164558056}
   m_Layer: 0
   m_Name: LifeZone
   m_TagString: Health
@@ -2271,6 +2332,21 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1164558051}
   m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!114 &1164558056
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1164558051}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 73c39b35c2b58db44b7ada95d6ad2069, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  healthZoneUI: {fileID: 408276019}
+  directionalLight: {fileID: 410087040}
+  Healthamount: 5
 --- !u!1 &1242525786
 GameObject:
   m_ObjectHideFlags: 0
@@ -2625,9 +2701,6 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 5126527961139664765, guid: 035bf1ba97d19214580cfe6f5a29fdc3, type: 3}
       insertIndex: -1
       addedObject: {fileID: 1144938289}
-    - targetCorrespondingSourceObject: {fileID: 453084650579209855, guid: 035bf1ba97d19214580cfe6f5a29fdc3, type: 3}
-      insertIndex: -1
-      addedObject: {fileID: 1705346911}
   m_SourcePrefab: {fileID: 100100000, guid: 035bf1ba97d19214580cfe6f5a29fdc3, type: 3}
 --- !u!1 &1480168169
 GameObject:
@@ -2863,47 +2936,6 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 50a0925b0c22af146a2d15615f815a1c, type: 3}
---- !u!114 &1641087666 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 2862278905927072854, guid: 035bf1ba97d19214580cfe6f5a29fdc3, type: 3}
-  m_PrefabInstance: {fileID: 1422802435}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 45e653bab7fb20e499bda25e1b646fea, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
---- !u!1 &1705346904 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 453084650579209855, guid: 035bf1ba97d19214580cfe6f5a29fdc3, type: 3}
-  m_PrefabInstance: {fileID: 1422802435}
-  m_PrefabAsset: {fileID: 0}
---- !u!114 &1705346911
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1705346904}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 46bfddcdee2a2b94489900158e8848dc, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  velocity: 4.5
-  Health: 100
-  decreaseHealth: 50
-  increaseHealth: 10
-  dangerZoneUI: {fileID: 1578266421}
-  healthZoneUI: {fileID: 408276019}
-  door: {fileID: 1882103066}
-  doorColliderGameObject: {fileID: 936199592}
-  _light: {fileID: 410087040}
-  fpCamera: {fileID: 1641087666}
-  secondCamera: {fileID: 251880052}
-  gameOver: {fileID: 0}
-  gameOverUI: {fileID: 364003428}
 --- !u!4 &1705346917 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 937451010987979973, guid: 035bf1ba97d19214580cfe6f5a29fdc3, type: 3}
@@ -3404,3 +3436,4 @@ SceneRoots:
   - {fileID: 701722145}
   - {fileID: 251880053}
   - {fileID: 364003432}
+  - {fileID: 639453060}
