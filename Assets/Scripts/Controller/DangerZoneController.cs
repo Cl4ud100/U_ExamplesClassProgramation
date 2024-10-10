@@ -2,11 +2,12 @@ using System;
 using System.Collections;
 using Unity.VisualScripting;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class DangerZoneController : MonoBehaviour
 {
     [SerializeField] private GameObject dangerZoneUI;
-    [SerializeField] private int HealthDecreased = 10 ;
+    [SerializeField] private int HealthDecreased = 10 ; //Para modificar en unity, sin entrar en el scripts
     private IEnumerator instanciaCorrutina;
     private void Start()
     {
@@ -32,6 +33,11 @@ public class DangerZoneController : MonoBehaviour
             dangerZoneUI.SetActive(false);
             yield return new WaitForSeconds(2);
         }
+
+        if (GameManager.instance.health <= 0)
+        {
+            SceneManager.LoadScene("Game_Over");
+        }
     }
 
     private void OnTriggerExit(Collider other)
@@ -40,4 +46,6 @@ public class DangerZoneController : MonoBehaviour
         StopCoroutine(instanciaCorrutina);
         
     }
+
+
 }

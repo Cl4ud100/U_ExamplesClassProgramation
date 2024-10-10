@@ -1,4 +1,5 @@
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class GameManager : MonoBehaviour
     //Siempre Publico
@@ -19,10 +20,12 @@ public class GameManager : MonoBehaviour
         if (instance == null)
         {
             instance = this;
+            DontDestroyOnLoad(gameObject);
         }
         else
         {
             Destroy(gameObject);
+            Debug.Log("Game Manager already Destroyed");
         }
     }
 
@@ -41,5 +44,23 @@ public class GameManager : MonoBehaviour
     {
         health -= amount;
         Debug.Log("Health Decreased" + health);
+        if (health <= 0)
+        {
+            Death();
+        }
+    }
+
+    public void Death()
+    {
+        Debug.Log("Game Over");
+        SceneManager.LoadScene("Game_Over");
+        Cursor.lockState = CursorLockMode.None;
+    }
+
+    public void restartHealth()
+    {
+        health = 100;
+        Cursor.lockState = CursorLockMode.Locked;
+
     }
 }

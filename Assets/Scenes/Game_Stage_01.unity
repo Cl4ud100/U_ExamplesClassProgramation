@@ -1492,7 +1492,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   dangerZoneUI: {fileID: 1578266421}
-  HealthDecreased: 10
+  HealthDecreased: 100
 --- !u!1001 &625424262
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1957,6 +1957,7 @@ GameObject:
   - component: {fileID: 936199596}
   - component: {fileID: 936199595}
   - component: {fileID: 936199594}
+  - component: {fileID: 936199597}
   m_Layer: 0
   m_Name: DoorTrigger
   m_TagString: Door
@@ -2053,6 +2054,21 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 936199592}
   m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!114 &936199597
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 936199592}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0bac5504d08a76a4ea4b889e689ab66b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  clueController: {fileID: 1705346918}
+  doorAnimatorGO: {fileID: 1882103066}
+  doorColliderGO: {fileID: 936199592}
 --- !u!1 &1128691695
 GameObject:
   m_ObjectHideFlags: 0
@@ -2701,7 +2717,15 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 5126527961139664765, guid: 035bf1ba97d19214580cfe6f5a29fdc3, type: 3}
       insertIndex: -1
       addedObject: {fileID: 1144938289}
+    - targetCorrespondingSourceObject: {fileID: 453084650579209855, guid: 035bf1ba97d19214580cfe6f5a29fdc3, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1705346918}
   m_SourcePrefab: {fileID: 100100000, guid: 035bf1ba97d19214580cfe6f5a29fdc3, type: 3}
+--- !u!1 &1422802436 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 453084650579209855, guid: 035bf1ba97d19214580cfe6f5a29fdc3, type: 3}
+  m_PrefabInstance: {fileID: 1422802435}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1480168169
 GameObject:
   m_ObjectHideFlags: 0
@@ -2941,6 +2965,18 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 937451010987979973, guid: 035bf1ba97d19214580cfe6f5a29fdc3, type: 3}
   m_PrefabInstance: {fileID: 1422802435}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &1705346918
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1422802436}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 996c314cbc48aaf4db7db297b4c7098e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1739078548
 GameObject:
   m_ObjectHideFlags: 0
