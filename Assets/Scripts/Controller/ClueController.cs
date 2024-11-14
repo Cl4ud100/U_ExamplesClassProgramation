@@ -8,6 +8,10 @@ public class ClueController : MonoBehaviour
     
     private Inventory playerInventory;
 
+    [SerializeField] private Sprite clue1Icon;
+    [SerializeField] private Sprite clue2Icon;
+
+
     private void Start()
     {
         playerInventory = GetComponent<Inventory>();
@@ -21,7 +25,7 @@ public class ClueController : MonoBehaviour
                 Clue1Found = true;
                 Debug.Log("Clue1 Found");
                 //crear un nuevo item para la pista 1
-                Item clue1Item = new Item("Clue 1","Primera pista");
+                Item clue1Item = new Item("Clue 1","Primera pista",clue1Icon);
                 //agregar al inventario
                 playerInventory.AddItem(clue1Item);
                 //destruir el objeto coleccionado
@@ -31,9 +35,9 @@ public class ClueController : MonoBehaviour
             case "Clue2":
                 Clue2Found = true;
                 Debug.Log("Clue2 Found");
-                Item clue2Item = new Item("Clue2","Segunda pista");
+                Item clue2Item = new Item("Clue2","Segunda pista",clue2Icon);
                 playerInventory.AddItem(clue2Item);
-                Destroy(other.gameObject);
+                Destroy(other.transform.parent.gameObject);
                 break;
             
         }
