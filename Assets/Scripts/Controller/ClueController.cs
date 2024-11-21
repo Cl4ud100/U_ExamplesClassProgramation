@@ -25,7 +25,7 @@ public class ClueController : MonoBehaviour
                 Clue1Found = true;
                 Debug.Log("Clue1 Found");
                 //crear un nuevo item para la pista 1
-                Item clue1Item = new Item("Clue 1","Primera pista",clue1Icon);
+                Item clue1Item = new Item("Clue1","Primera pista",clue1Icon);
                 //agregar al inventario
                 playerInventory.AddItem(clue1Item);
                 //destruir el objeto coleccionado
@@ -48,7 +48,7 @@ public class ClueController : MonoBehaviour
         //verificacion si el inventario tiene ambas partes
         bool hasClue1 = playerInventory.HasItem("Clue1");
         bool hasClue2 = playerInventory.HasItem("Clue2");
-        
-        return Clue1Found && Clue2Found;
+        return hasClue1 && hasClue2;
+        //return Clue1Found && Clue2Found;
     }
 }

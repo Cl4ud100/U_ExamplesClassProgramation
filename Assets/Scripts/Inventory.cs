@@ -1,8 +1,9 @@
-using System;
 using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
+using DG.Tweening;
+using Unity.VisualScripting;
 
 public class Inventory : MonoBehaviour
 {
@@ -21,7 +22,20 @@ public class Inventory : MonoBehaviour
       if (Input.GetKeyDown(KeyCode.I))
       {
          inventoryVisible = !inventoryVisible;
-         InventoryPanel.SetActive(inventoryVisible);
+         if (inventoryVisible)
+         {
+            //activamos o desactivamos dependiendo de la condicion actual
+            InventoryPanel.SetActive(inventoryVisible);
+            //esta es la animacion de apertura
+            InventoryPanel.transform.localScale = Vector3.zero;
+            InventoryPanel.transform.DOScale(1f, 0.5f).SetEase(Ease.OutBack);
+         }
+         else
+         {
+            //Animacion de cierre
+            InventoryPanel.transform.DOScale(0f, 0.3f).SetEase(Ease.InBack)
+               .OnComplete(() => InventoryPanel.SetActive(false));
+         }
       }
    }
 
@@ -69,5 +83,32 @@ public class Inventory : MonoBehaviour
          
 
       }
+      
+      
    }
+      //Para remover items en caso de utilizarlo
+      public void RemoveItem(string itemName)
+      {
+         Item itemToRemove = null;
+         //buscar el item a remover en la lista
+         foreach (Item item in itemList)
+         {
+            if (item._itemName == itemName)
+            {
+               itemToRemove = item;
+               break;
+            }
+         }
+          //si encontro el item, eliminalo
+         if (itemToRemove !=  null)
+         {
+            itemList.Remove(itemToRemove);
+            Debug.Log("Item eliminado: " + itemToRemove._itemName);
+            UpdateInventoryUI();
+         }
+         else
+         {
+            Debug.LogWarning("El item " + itemName + "no existe, Revisa el nombre del item");
+         }
+      }
 }

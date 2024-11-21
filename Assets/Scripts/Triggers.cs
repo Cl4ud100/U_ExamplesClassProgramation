@@ -1,6 +1,6 @@
 using System;
 using System.Collections;
-using Cinemachine;
+using Unity.Cinemachine;
 using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.SceneManagement;
@@ -45,8 +45,8 @@ public class Triggers : MonoBehaviour
     //esta zona es para las camaras
     [Header("Camera")]
     [Tooltip("Camara de la objeto animado")]
-    [SerializeField] private CinemachineVirtualCamera fpCamera;
-    [SerializeField] private CinemachineVirtualCamera secondCamera;
+    [SerializeField] private CinemachineCamera fpCamera;
+    [SerializeField] private CinemachineCamera secondCamera;
     [Space]
     
     [Header("GameOver")]
